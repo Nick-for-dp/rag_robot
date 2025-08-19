@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 
 
-def get_deepseek_api_key(key_name: str = 'DEEPSEEK_API_KEY'):
+def get_api_key(key_name: str = 'DEEPSEEK_API_KEY'):
     """
     从.env文件中读取DEEPSEEK_API_KEY
     

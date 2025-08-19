@@ -1,9 +1,9 @@
 from langchain_deepseek import ChatDeepSeek
-from robot.utils import get_deepseek_api_key
+from robot.utils import get_api_key
 
 
 def init_llm() -> ChatDeepSeek:
-    deepseek_api_key = get_deepseek_api_key()
+    deepseek_api_key = get_api_key()
     if not deepseek_api_key:
         raise ValueError("DEEPSEEK_API_KEY not found in environment variables")
     llm = ChatDeepSeek(
