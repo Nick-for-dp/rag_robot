@@ -2,7 +2,7 @@ from langchain_deepseek import ChatDeepSeek
 from robot.utils import get_api_key
 
 
-def init_llm() -> ChatDeepSeek:
+def init_llm(use_streaming: bool = True) -> ChatDeepSeek:
     deepseek_api_key = get_api_key()
     if not deepseek_api_key:
         raise ValueError("DEEPSEEK_API_KEY not found in environment variables")
@@ -12,7 +12,8 @@ def init_llm() -> ChatDeepSeek:
         max_tokens=2048,
         timeout=None,
         max_retries=2,
-        api_key=deepseek_api_key # pyright: ignore[reportArgumentType]
+        api_key=deepseek_api_key, # pyright: ignore[reportArgumentType]
+        streaming=use_streaming
     )
     return llm
 
