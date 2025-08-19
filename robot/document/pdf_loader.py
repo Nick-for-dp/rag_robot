@@ -23,14 +23,16 @@ def load_pdf(pdf_file_path: str):
 
 def init_embedding_model(model_name: Optional[str] = None):
     if not model_name:
-        model_name = 'sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2'
+        model_name = 'sentence-transformers/all-MiniLM-L6-v2'  # 384维模型
     # huggingface 镜像地址
     os.environ['HF_ENDPOINT'] = "https://hf-mirror.com"
+    # return HuggingFaceEmbeddings(model_name=model_name, 
+    #                              model_kwargs={"trust_remote_code":True})
     return HuggingFaceEmbeddings(model_name=model_name)
 
 
 if __name__ == '__main__':
-    pdf_file_path = r'document/nke-10k-2023.pdf'
+    pdf_file_path = r'../document/nke-10k-2023.pdf'
     splits = load_pdf(pdf_file_path=pdf_file_path)
     print(f"There has {len(splits)} splits.")
     print(f"{splits[0].page_content}\n")
